@@ -11,7 +11,7 @@ dotenv.config({ path: "./config/config.env" });
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL],
-    methods: ["GET","POST"],
+    methods: ["POST"],
     credentials: true,
   })
 );
@@ -20,12 +20,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req,res) => {
-  res.json({
-    success: true,
-    message: "Welcome to backend!"
-  })
-})
+// app.get("/", (req,res) => {
+//   res.json({
+//     success: true,
+//     message: "Welcome to backend!"
+//   })
+// })
 app.use("/api/v1/message", messageRouter);
 
 dbConnection();
